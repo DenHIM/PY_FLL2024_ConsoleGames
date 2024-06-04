@@ -1,0 +1,9 @@
+# Commands
+- Save all requirements in requirements.txt file
+```
+pip freeze > requirements.txt
+```
+- Install all requirements
+```
+pip install -r /path/to/requirements.txt
+```
