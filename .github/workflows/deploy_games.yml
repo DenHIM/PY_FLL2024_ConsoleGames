@@ -19,11 +19,15 @@ jobs:
             echo "Successfully installed pygbag"
             echo "Attempting to build games"
             python -m pygbag --build $GITHUB_WORKSPACE/game_pygame_test/main.py
+            python -m pygbag --build $GITHUB_WORKSPACE/game_ivan/main.py
             echo "Successfully build games"
-
+    - name: Create deployment folder
+      run: |
+            mkdir ./deployment
+            cp -r game_pygame_test/build/web ./deployment/game_pygame_test
+            cp -r game_ivan/build/web ./deployment/game_ivan
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4.6.1
       with:
         branch: github-pages
-        folder: game_pygame_test/build/web
-        target-folder: game_pygame_test
+        folder: deployment
