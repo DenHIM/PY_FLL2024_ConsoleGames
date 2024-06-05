@@ -7,8 +7,7 @@ blue = (random.randrange(0,5))
 hp = 20
 
 
-zadamage = [3,4,5,6]
-zareturn = [1,2,3,4]
+
 
 
 
