@@ -7,3 +7,12 @@ pip freeze > requirements.txt
 ```
 pip install -r /path/to/requirements.txt
 ```
+
+#pygbag
+```
+python -m pygbag game_pygame_test
+
+python -m pygbag --build game_pygame_test
+cd "/content/Games/game_pygame_test/"
+python -m http.server 8000
+```
