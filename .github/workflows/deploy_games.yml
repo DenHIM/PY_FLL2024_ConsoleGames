@@ -1,0 +1,29 @@
+name: Build pygames with Pygbag
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-pygbag:
+    name: Build pygames with Pygbag
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Checkout
+      run: |
+            echo "Attempting to install pygbag"
+            python -m pip install pygbag
+            echo "Successfully installed pygbag"
+            echo "Attempting to build games"
+            python -m pygbag --build $GITHUB_WORKSPACE/game_pygame_test/main.py
+            echo "Successfully build games"
+
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4.6.1
+      with:
+        branch: github-pages
+        folder: game_pygame_test/build/web
+        target-folder: game_pygame_test
